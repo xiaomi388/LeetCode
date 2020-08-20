@@ -11,8 +11,8 @@ int partition(vector<int> &nums, int lo, int hi) {
     int pivot = nums[lo];
     int i = lo, j = hi;
     while (i < j) {
-        do ++i; while (i < hi && nums[i] <= pivot);
-        do --j; while (j > lo && nums[j] > pivot);
+        do ++i; while (i < hi && nums[i] < pivot);
+        do --j; while (j > lo && nums[j] >= pivot);
         if (i < j) swap(nums[i], nums[j]);
     }
     swap(nums[lo], nums[j]);
@@ -28,7 +28,7 @@ void quickSort(vector<int> &nums, int lo, int hi) {
 }
 
 int main() {
-    vector<int> a{10,8, 1,3, 5, 0};
+    vector<int> a{10,8, 1,3,1,1, 5, 0};
     quickSort(a, 0, a.size());
     for (auto i : a) cout << i << " ";
     cout << endl;
