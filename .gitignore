@@ -2,4 +2,5 @@
 cmake*
 .idea/
 venv/
+.DS_Store
 
