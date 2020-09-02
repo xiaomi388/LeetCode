@@ -31,3 +31,18 @@ class Solution:
                 ret[upper_bound(num)] = num
         return ret
 
+# Patience Algorithm
+# https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/LongestIncreasingSubsequence.pdf
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        tails = []
+        for num in nums:
+            idx = bisect.bisect(tails, num)
+            if idx == len(tails):
+                tails.append(num)
+            else:
+                tails[idx] = num
+        return len(tails)
+
+
+
