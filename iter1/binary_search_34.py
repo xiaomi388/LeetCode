@@ -5,25 +5,26 @@ class Solution:
         def upperBound():
             left = begin; right = end
             while left < right:
-                mid = (left + right) / 2
+                mid = (left + right) // 2
                 if nums[mid] <= target:
                     left = mid + 1
                 else:
-                    right = mid - 1
+                    right = mid
             return right
 
         def lowerBound():
             left = begin; right = end
             while left < right:
-                mid = (left + right) / 2
+                mid = left + right // 2
                 if nums[mid] < target:
                     left = mid + 1
                 else:
-                    right = mid - 1
+                    right = mid
+            return left
 
         lower = lowerBound()
         upper = upperBound()
-        return [lower, upper-1] if 0 <= lower < end and 0 < upper <= end else [-1, -1]
+        return [lower, upper-1] if lower != upper else [-1, -1]
 
 
 
